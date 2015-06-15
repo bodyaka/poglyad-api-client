@@ -7,7 +7,7 @@ First of all, this module must be initialized. Better if it implemented in entry
 require('poglyad-api-client')('some.api.poglyad.org');
 ```
 
-And then, simply require module in the necessary module, and use:
+And then, simply require module in the necessary place, and use:
  
 ```js
 var poglyadApiClient = require('poglyad-api-client');
