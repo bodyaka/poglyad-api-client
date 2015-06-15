@@ -1,0 +1,21 @@
+{
+  "name": "poglyad-api-client",
+  "version": "0.0.1",
+  "description": "module for simple access to Poglyad API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bodyaka/poglyad-api-client.git"
+  },
+  "dependencies": {
+	    "request": "2.57.0"
+	  },
+  "author": "Bogdan Kyrychenko",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/bodyaka/poglyad-api-client/issues"
+  }
+}
