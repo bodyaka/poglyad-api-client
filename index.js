@@ -1,4 +1,5 @@
 var request = require('request');
+var httpProxy = require('http-proxy');
 
 var _apiDomain;
 var _accessToken;
@@ -16,7 +17,31 @@ var poglyadApiClient = function(domain, accessToken){
  */
 poglyadApiClient.setAccessToken = function(accessToken){
 	_accessToken = accessToken;
-}
+};
+
+/**
+ * Config proxy
+ * 
+ * @param {
+ * @param 	options.expressInstance
+ * @param 	options.apiPath
+ * @param 	options.apiDomain
+ * @param }
+ */
+poglyadApiClient.proxy = function(options){
+	if(!options.expressInstance || !options.apiPath || !options.apiDomain){
+		console.log('Proxy parameters not valid');
+		return false;
+	}
+	
+	options.expressInstance.use(options.apiPath, function(req, res, next){
+		var url = 'http://' + options.apiDomain + req.url;
+		req.pipe(request(url)).pipe(res);
+	});
+	
+	return true;
+};
+
 
 /**
  * Send request for configured API 

@@ -11,7 +11,8 @@
     "url": "git://github.com/bodyaka/poglyad-api-client.git"
   },
   "dependencies": {
-	    "request": "2.57.0"
+	    "request": "2.57.0",
+	    "http-proxy": "1.11.1"
 	  },
   "author": "Bogdan Kyrychenko",
   "license": "BSD-2-Clause",
