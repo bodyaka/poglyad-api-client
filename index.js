@@ -1,5 +1,6 @@
 var request = require('request');
-var httpProxy = require('http-proxy');
+var url = require('url');
+var http = require('http');
 
 var _apiDomain;
 var _accessToken;
@@ -35,8 +36,27 @@ poglyadApiClient.proxy = function(options){
 	}
 	
 	options.expressInstance.use(options.apiPath, function(req, res, next){
-		var url = 'http://' + options.apiDomain + req.url;
-		req.pipe(request(url)).pipe(res);
+		var newOptions = {
+			method: req.method,
+			hostname: options.apiDomain,
+			host: options.apiDomain,
+			path: req.url,
+			headers: {}
+		};
+		if(req.headers.authorization) {
+			newOptions.headers.authorization = req.headers.authorization;
+		}
+		
+		var newReq = http.request(newOptions, function(newRes) {
+			var headers = newRes.headers;
+			
+			if(newRes.headers['set-cookie']) delete newRes.headers['set-cookie'];
+			
+			res.writeHead(newRes.statusCode, headers);
+			newRes.pipe(res);
+		});
+		
+		req.pipe(newReq);
 	});
 	
 	return true;
@@ -79,7 +99,11 @@ poglyadApiClient.request = function(method, url, params, callback){
 	}
 	
 	// send request
-	request(options, callback);
+	request(options, function(err, res, data) {
+		if(!err && data && data.error) return callback(new Error('' + data.error.code + ':' + data.error.message), res, data);
+		
+		callback(err, res, data);
+	})
 };
 
 module.exports = poglyadApiClient;
