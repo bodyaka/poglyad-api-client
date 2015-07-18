@@ -1,14 +1,17 @@
 var request = require('request');
 var url = require('url');
-var http = require('http');
+var httpProxy = require('http-proxy');
 
 var _apiDomain;
+var _apiPort;
 var _accessToken;
 
-var poglyadApiClient = function(domain, accessToken){
-	_apiDomain = domain;
+var poglyadApiClient = function(options){
+	_apiDomain = options.apiDomain || '';
+	_apiPort = options.apiPort || '';
+	_accessToken = options.accessToken || '';
 	
-	if(accessToken) poglyadApiClient.setAccessToken(accessToken);
+	return poglyadApiClient;
 };
 
 /**
@@ -29,37 +32,11 @@ poglyadApiClient.setAccessToken = function(accessToken){
  * @param 	options.apiDomain
  * @param }
  */
-poglyadApiClient.proxy = function(options){
-	if(!options.expressInstance || !options.apiPath || !options.apiDomain){
-		console.log('Proxy parameters not valid');
-		return false;
-	}
-	
-	options.expressInstance.use(options.apiPath, function(req, res, next){
-		var newOptions = {
-			method: req.method,
-			hostname: options.apiDomain,
-			host: options.apiDomain,
-			path: req.url,
-			headers: {}
-		};
-		if(req.headers.authorization) {
-			newOptions.headers.authorization = req.headers.authorization;
-		}
-		
-		var newReq = http.request(newOptions, function(newRes) {
-			var headers = newRes.headers;
-			
-			if(newRes.headers['set-cookie']) delete newRes.headers['set-cookie'];
-			
-			res.writeHead(newRes.statusCode, headers);
-			newRes.pipe(res);
+poglyadApiClient.proxy = function(req, res, next){
+		var proxy = httpProxy.createProxyServer({
+			target: 'http://' + _apiDomain + ':' + _apiPort
 		});
-		
-		req.pipe(newReq);
-	});
-	
-	return true;
+		proxy.web(req, res);
 };
 
 
