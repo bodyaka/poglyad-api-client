@@ -7,9 +7,9 @@ var _apiPort;
 var _accessToken;
 
 var poglyadApiClient = function(options){
-	_apiDomain = options.apiDomain || '';
-	_apiPort = options.apiPort || '';
-	_accessToken = options.accessToken || '';
+	_apiDomain 		= options.apiDomain || '';
+	_apiPort 		= options.apiPort || '';
+	_accessToken 	= options.accessToken || '';
 	
 	return poglyadApiClient;
 };
