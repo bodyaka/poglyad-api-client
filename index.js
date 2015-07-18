@@ -33,10 +33,13 @@ poglyadApiClient.setAccessToken = function(accessToken){
  * @param }
  */
 poglyadApiClient.proxy = function(req, res, next){
-		var proxy = httpProxy.createProxyServer({
-			target: 'http://' + _apiDomain + ':' + _apiPort
-		});
-		proxy.web(req, res);
+	var url = 'http://' + _apiDomain + ':' + _apiPort;
+	
+	var proxy = httpProxy.createProxyServer({
+		target: url,
+		changeOrigin: true
+	});
+	proxy.web(req, res);
 };
 
 
