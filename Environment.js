@@ -1,10 +1,65 @@
 var request = require('request');
+var Sequelize = require('sequelize');
+var expressSession = require('express-session');
+var cookieParser = require('cookie-parser');
+
+var dbClient = function() {
+	
+	return {
+		connect: function(app, configDB, configSession, callback) {
+			var orm = new Sequelize(configDB.database, configDB.user, configDB.password, {
+				host: configDB.host,
+				dialect: configDB.protocol,
+				define: {
+					charset: 'utf8',
+					collate: 'utf8_general_ci'
+				}
+			});		
+			
+			app.use(cookieParser());
+			var SequelizeStore = require('connect-session-sequelize')(expressSession.Store);
+			
+			// init sequelize sessions
+			var instSequelizeStore = new SequelizeStore({db: orm})
+			instSequelizeStore.sync().then(function(){ // recreate table on each server start
+				app.use(expressSession({
+					store: instSequelizeStore,
+					resave: false,
+					saveUninitialized: true,
+					secret: configSession.secret,
+					key: configSession.key,
+					cookie: configSession.cookie
+				}));
+				
+				callback();
+			}); 
+			
+			return orm;
+		}
+	}
+}();
+
 
 module.exports = {
-	init: function() {
-		var shell = require("shelljs");
-		var envVar = process.env.OPENSHIFT_REPO_DIR;
-		shell.exec("echo RepoEnv: " + envVar);
-		shell.exec("HOME=$OPENSHIFT_REPO_DIR bower install");
-	}
-}
+	frontend: {
+		init: function() {
+			var shell = require("shelljs");
+			var envVar = process.env.OPENSHIFT_REPO_DIR;
+			shell.exec("echo RepoEnv: " + envVar);
+			shell.exec("HOME=$OPENSHIFT_REPO_DIR bower install");
+		}
+	},
+	
+	/**
+	 * Module connect to Client DB. (Init session-store module, ..., etc.)
+	 * @param app - express instance
+	 * @param configs - object {
+	 * 		database: '',
+	 * 		user: '',
+	 * 		password: '',
+	 * 		host: '',
+	 * 		protocol: '',
+	 * 	}
+	 */
+	dbClient: dbClient
+};
