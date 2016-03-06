@@ -80,7 +80,13 @@ poglyadApiClient.request = function(method, url, params, callback){
 	
 	// send request
 	request(options, function(err, res, data) {
-		if(!err && data && data.error) return callback(new Error('' + data.error.code + ':' + data.error.message), res, data);
+		if(data && data.error) {
+			return callback(new Error('' + data.error.code + ':' + data.error.message), res, data);
+		} else if(err) {
+			return callback(err)
+		} else if(res.statusCode >= 300) {
+			return callback(new Error('' +res.statusCode + ':' + res.body), res, data);
+		}
 		
 		callback(err, res, data);
 	})
