@@ -1,6 +1,6 @@
 {
   "name": "poglyad-org",
-  "version": "0.3.3",
+  "version": "1.0.2",
   "description": "libraries for poglyad.org environment",
   "main": "index.js",
   "scripts": {
