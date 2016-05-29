@@ -40,16 +40,7 @@ var dbClient = function() {
 }();
 
 
-module.exports = {
-	frontend: {
-		init: function() {
-			var shell = require("shelljs");
-			var envVar = process.env.OPENSHIFT_REPO_DIR;
-			shell.exec("echo RepoEnv: " + envVar);
-			shell.exec("HOME=$OPENSHIFT_REPO_DIR bower install");
-		}
-	},
-	
+module.exports = {	
 	/**
 	 * Module connect to Client DB. (Init session-store module, ..., etc.)
 	 * @param app - express instance
