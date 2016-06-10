@@ -31,7 +31,7 @@ var dbClient = function() {
 					cookie: configSession.cookie
 				}));
 				
-				callback();
+				callback(orm);
 			}); 
 			
 			return orm;
