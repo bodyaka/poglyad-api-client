@@ -6,8 +6,19 @@ var cookieParser = require('cookie-parser');
 var dbClient = function() {
 	
 	return {
+        /**
+         * Module connect to Client DB. (Init session-store module, ..., etc.)
+         * @param app - express instance
+         * @param configs - object {
+		 * 		name: '',
+		 * 		user: '',
+		 * 		password: '',
+		 * 		host: '',
+		 * 		protocol: '',
+		 * 	}
+         */
 		connect: function(app, configDB, configSession, callback) {
-			var orm = new Sequelize(configDB.database, configDB.user, configDB.password, {
+			var orm = new Sequelize(configDB.name, configDB.user, configDB.password, {
 				host: configDB.host,
 				dialect: configDB.protocol,
 				define: {
@@ -41,16 +52,5 @@ var dbClient = function() {
 
 
 module.exports = {	
-	/**
-	 * Module connect to Client DB. (Init session-store module, ..., etc.)
-	 * @param app - express instance
-	 * @param configs - object {
-	 * 		database: '',
-	 * 		user: '',
-	 * 		password: '',
-	 * 		host: '',
-	 * 		protocol: '',
-	 * 	}
-	 */
 	dbClient: dbClient
 };
