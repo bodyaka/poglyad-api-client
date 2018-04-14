@@ -17,16 +17,11 @@ var poglyadApiClient = function(options){
 };
 
 /**
- * Set API accessToken for all requests
+ * Config proxy middleware
  *
- * @param accessToken
- */
-poglyadApiClient.setAccessToken = function(accessToken){
-  _accessToken = accessToken;
-};
-
-/**
- * Config proxy
+ * Register as Express middleware after coockies intialization.
+ * Example:
+ *   app.use('/api', poglyadApiClient.proxy);
  *
  * @param {
  * @param 	options.expressInstance
@@ -34,32 +29,34 @@ poglyadApiClient.setAccessToken = function(accessToken){
  * @param 	options.apiDomain
  * @param }
  */
-poglyadApiClient.proxy = function(req, res, next){
+poglyadApiClient.proxy = function() {
   var url = 'http://' + _apiDomain + ':' + _apiPort;
 
   var proxyOptions = {
     target: url,
-    changeOrigin: true
+    changeOrigin: true,
   };
 
-  // handle _apiSecret
-  if (_apiSecret) {
-    proxyOptions.headers = { ApiSecret: _apiSecret };
-  }
-
-  // handle _accessToken
-  if (_accessToken) {
-    proxyOptions.headers = { Authorization: 'Bearer ' + _accessToken };
-  }
-
-  // handle ApiClientTargetId
-  if (_apiClientTargetId) {
-    proxyOptions.headers = { ApiClientTargetId: _apiClientTargetId };
-  }
-
   var proxy = httpProxy.createProxyServer(proxyOptions);
+  proxy.on('proxyReq', function (proxyReq, req, res, options) {
+    if (_apiSecret) {
+      proxyReq.setHeader('ApiSecret', _apiSecret);
+    }
 
-  proxy.web(req, res);
+    if (req.session) {
+      if (req.session.accessToken) {
+        proxyReq.setHeader('Authorization', 'Bearer ' + req.session.accessToken);
+      }
+
+      if (req.session.apiClientTargetId) {
+        proxyReq.setHeader('ApiClientTargetId', req.session.apiClientTargetId);
+      }
+    }
+  });
+
+  return function(req, res, next) {
+    proxy.web(req, res);
+  }
 };
 
 
@@ -69,9 +66,10 @@ poglyadApiClient.proxy = function(req, res, next){
  * @param method
  * @param url
  * @param params
+ * @param reqOrigin original request object from browser
  * @param callback
  */
-poglyadApiClient.request = function(method, url, params, callback){
+poglyadApiClient.request = function(method, url, params, reqOrigin, callback){
   if(!_apiDomain) throw new Error('Module poglyad-api-client not initialised correctly. "apiDomain" must be passed. See more at https://github.com/bodyaka/poglyad-api-client/blob/master/README.md');
 
   params = params || {};
@@ -89,8 +87,15 @@ poglyadApiClient.request = function(method, url, params, callback){
     options.headers.ApiSecret = _apiSecret;
   }
 
-  // handle token
-  if(_accessToken) options.headers.Authorization = 'Bearer ' + _accessToken;
+  if (reqOrigin.session) {
+    if (reqOrigin.session.accessToken) {
+      options.headers.Authorization = 'Bearer ' + reqOrigin.session.accessToken;
+    }
+
+    if (reqOrigin.session.apiClientTargetId) {
+      options.headers.ApiClientTargetId = reqOrigin.session.apiClientTargetId;
+    }
+  }
 
   // attach parameters to request
   if(method.toLowerCase() == 'get'){
