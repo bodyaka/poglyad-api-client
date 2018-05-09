@@ -11,7 +11,7 @@ module.exports = function (baseDir) {
   };
 
   global.requireRel = function (file) {
-    return require(abs_path(file));
+    return require(absPath(file));
   };
 
   return {
