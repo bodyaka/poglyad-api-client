@@ -1,7 +1,7 @@
 {
 	"name": "poglyad-org",
-	"version": "1.3.0",
-	"description": "libraries for poglyad.org environment",
+	"version": "1.4.0",
+	"description": "libraries for poglyad.org clients",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -11,16 +11,18 @@
 		"url": "git://github.com/bodyaka/poglyad-org.git"
 	},
 	"dependencies": {
-		"request": "2.83.0",
-		"http-proxy": "1.16.2",
+		"request": "2.85.0",
+		"http-proxy": "1.17.0",
 		
 		"express-session": "1.15.6",
 		"cookie-parser": "1.4.3",
-		"sequelize": "4.33.2",
-		"connect-session-sequelize": "4.1.0",
-		"pg": "7.4.1",
-		"pg-native": "2.2.0",
-		"pg-hstore": "2.3.2"
+		"sequelize": "4.37.7",
+		"connect-session-sequelize": "5.2.1",
+		"pg": "7.4.3",
+		"pg-native": "3.0.0",
+		"pg-hstore": "2.3.2",
+
+		"nconf": "0.10.0"
 	},
 	"author": "Bogdan Kyrychenko",
 	"license": "BSD-2-Clause",
