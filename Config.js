@@ -4,7 +4,7 @@ var fs = require('fs');
 
 module.exports = function () {
   // prepare local config
-  var pathLocalConfig = absPath(path.join('config', 'config.json'));
+  var pathLocalConfig = getAbsolutePath(path.join('config', 'config.json'));
   if (fs.existsSync(pathLocalConfig)) {
     nconf.file(pathLocalConfig);
   }
@@ -36,7 +36,7 @@ module.exports = function () {
   }
 
   // prepare variables from package.json
-  var pathPackageJson = absPath('package.json');
+  var pathPackageJson = getAbsolutePath('package.json');
   if (fs.existsSync(pathPackageJson)) {
     var jsonPackage = require(pathPackageJson);
     nconf.set('sources:version', jsonPackage.version);
