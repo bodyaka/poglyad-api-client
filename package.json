@@ -1,6 +1,6 @@
 {
 	"name": "poglyad-org",
-	"version": "1.4.4",
+	"version": "1.5.0",
 	"description": "libraries for poglyad.org clients",
 	"main": "index.js",
 	"scripts": {
@@ -11,16 +11,16 @@
 		"url": "git://github.com/bodyaka/poglyad-org.git"
 	},
 	"dependencies": {
-		"request": "2.85.0",
+		"request": "2.88.0",
 		"http-proxy": "1.17.0",
 		
 		"express-session": "1.15.6",
 		"cookie-parser": "1.4.3",
-		"sequelize": "4.37.7",
-		"connect-session-sequelize": "5.2.1",
-		"pg": "7.4.3",
+		"sequelize": "5.8.7",
+		"connect-session-sequelize": "6.0.0",
+		"pg": "7.11.0",
 		"pg-native": "3.0.0",
-		"pg-hstore": "2.3.2",
+		"pg-hstore": "2.3.3",
 
 		"nconf": "0.10.0"
 	},
