@@ -1,8 +1,8 @@
 {
 	"name": "poglyad-org",
-	"version": "1.5.0",
+	"version": "2.0.0",
 	"description": "libraries for poglyad.org clients",
-	"main": "index.js",
+	"main": "src/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -14,8 +14,8 @@
 		"request": "2.88.0",
 		"http-proxy": "1.17.0",
 		
-		"express-session": "1.15.6",
-		"cookie-parser": "1.4.3",
+		"express-session": "1.16.1",
+		"cookie-parser": "1.4.4",
 		"sequelize": "5.8.7",
 		"connect-session-sequelize": "6.0.0",
 		"pg": "7.11.0",
@@ -23,6 +23,9 @@
 		"pg-hstore": "2.3.3",
 
 		"nconf": "0.10.0"
+	},
+	"peerDependencies": {
+		"react": "16.8.6"
 	},
 	"author": "Bogdan Kyrychenko",
 	"license": "BSD-2-Clause",
