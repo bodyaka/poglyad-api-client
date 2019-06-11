@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Pagination extends Component {
+class ComponentPagination extends Component {
   getLink(page, title) {
     let key = String(page + title);
     let className = 'page';
@@ -39,4 +39,4 @@ class Pagination extends Component {
   }
 }
 
-export default Pagination;
+export default ComponentPagination;
