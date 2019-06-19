@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Pagination.scss';
 
 class ComponentPagination extends Component {
   getLink(page, title) {
@@ -8,13 +9,15 @@ class ComponentPagination extends Component {
       className += ' active';
     }
 
-    return <a
-      key={key}
-      onClick={this.props.handleTogglePage.bind(null, page)}
-      href="javascript:void(0)"
-      className={className}>
-      {title}
-    </a>;
+    return (
+      <a
+        key={key}
+        onClick={this.props.handleTogglePage.bind(null, page)}
+        href="javascript:void(0)"
+        className={className}>
+        {title}
+      </a>
+    );
   }
 
   render() {

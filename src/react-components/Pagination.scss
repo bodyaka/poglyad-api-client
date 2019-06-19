@@ -1,0 +1,12 @@
+.pagination {
+  .page {
+    min-width: 20px;
+    min-height: 20px;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
+}
