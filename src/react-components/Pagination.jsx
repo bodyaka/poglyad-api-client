@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import './Pagination.scss';
+
+if (process.env.BROWSER) {
+  require('./Pagination.scs');
+}
 
 class ComponentPagination extends Component {
   getLink(page, title) {
