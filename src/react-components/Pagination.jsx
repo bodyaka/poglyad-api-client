@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 if (process.env.BROWSER) {
-  require('./Pagination.scs');
+  require('./Pagination.scss');
 }
 
 class ComponentPagination extends Component {
