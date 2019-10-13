@@ -45,7 +45,8 @@
 		"mini-css-extract-plugin": "^0.8.0",
 
 		"react": "^16.10.1",
-		"react-dom": "^16.10.1"
+		"react-dom": "^16.10.1",
+		"react-image-gallery": "^0.9.1"
 	},
 	"author": "Bogdan Kyrychenko",
 	"license": "BSD-2-Clause",

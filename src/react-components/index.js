@@ -1,3 +1,4 @@
 import ComponentPagination from './Pagination';
+import ComponentMediaGallery from './MediaGallery';
 
-export { ComponentPagination };
+export { ComponentPagination, ComponentMediaGallery };
