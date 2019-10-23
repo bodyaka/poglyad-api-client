@@ -1,4 +1,5 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+@import "~@material/icon-button/mdc-icon-button";
 
 .media-gallery {
   .image-gallery {
@@ -20,6 +21,32 @@
           img {
             width: auto;
             max-height: 100%;
+          }
+        }
+
+        .play-button {
+          .mdc-icon-button {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            background-color: rgba(255, 255, 255, 0.3);
+
+            .material-icons {
+              opacity: 0.6;
+              font-size: 120px;
+            }
+
+            &::after,
+            &::before {
+              border-radius: initial;
+            }
+
+            &:hover::before,
+            &:active::after{
+              opacity: 0;
+            }
           }
         }
       }

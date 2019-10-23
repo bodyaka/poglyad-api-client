@@ -4,7 +4,7 @@
 	"description": "libraries for poglyad.org clients",
 	"main": "src/index.js",
 	"scripts": {
-		"start": "webpack-dev-server",
+		"start": "GENERATE_SOURCEMAP=false webpack-dev-server",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -14,15 +14,10 @@
 	"dependencies": {
 		"request": "^2.88.0",
 		"http-proxy": "^1.18.0",
-
 		"express-session": "^1.16.2",
 		"cookie-parser": "^1.4.4",
 		"sequelize": "^5.19.1",
 		"connect-session-sequelize": "^6.0.0",
-		"pg": "^7.12.1",
-		"pg-native": "^3.0.0",
-		"pg-hstore": "^2.3.3",
-
 		"nconf": "^0.10.0"
 	},
 	"devDependencies": {
@@ -31,22 +26,23 @@
 		"webpack-dev-server": "^3.8.1",
 		"clean-webpack-plugin": "^3.0.0",
 		"html-webpack-plugin": "^3.2.0",
-
 		"babel-loader": "^8.0.6",
 		"@babel/register": "^7.6.2",
 		"@babel/core": "^7.6.2",
 		"@babel/preset-env": "^7.6.2",
 		"@babel/preset-react": "^7.0.0",
 		"@babel/plugin-proposal-class-properties": "^7.5.5",
-
 		"node-sass": "^4.12.0",
 		"sass-loader": "^8.0.0",
 		"css-loader": "^3.2.0",
+		"url-loader": "^2.2.0",
 		"mini-css-extract-plugin": "^0.8.0",
-
 		"react": "^16.10.1",
 		"react-dom": "^16.10.1",
-		"react-image-gallery": "^0.9.1"
+		"react-image-gallery": "^0.9.1",
+		"@material/icon-button": "^3.2.0",
+		"jquery": "^3.4.1",
+		"fotorama": "^4.6.4"
 	},
 	"author": "Bogdan Kyrychenko",
 	"license": "BSD-2-Clause",

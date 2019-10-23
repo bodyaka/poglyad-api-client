@@ -44,9 +44,16 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
+              sassOptions: {
+                includePaths: ['./node_modules'],
+              },
             },
           },
         ],
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader'
       },
     ],
   },
