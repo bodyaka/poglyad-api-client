@@ -14,10 +14,16 @@
 	"dependencies": {
 		"request": "^2.88.0",
 		"http-proxy": "^1.18.0",
+
 		"express-session": "^1.16.2",
 		"cookie-parser": "^1.4.4",
 		"sequelize": "^5.19.1",
 		"connect-session-sequelize": "^6.0.0",
+
+		"pg": "7.11.0",
+		"pg-native": "3.0.0",
+		"pg-hstore": "2.3.3",
+
 		"nconf": "^0.10.0"
 	},
 	"devDependencies": {
