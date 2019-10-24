@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -61,6 +62,11 @@ module.exports = {
   plugins: [
     // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        BROWSER: JSON.stringify(true),
+      },
+    }),
     new HtmlWebpackPlugin({
       title: 'Development',
       template: 'src/demo/index.html'

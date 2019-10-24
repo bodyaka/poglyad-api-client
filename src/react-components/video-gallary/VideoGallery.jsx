@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './jquery-loader';
-import 'fotorama/fotorama';
 
 if (process.env.BROWSER) {
+  require('./jquery-loader.js');
+  require('fotorama/fotorama.js');
   require('./VideoGallery.scss');
 }
 
@@ -22,8 +22,8 @@ class ComponentMediaGallery extends Component {
       loop: true,
       nav: 'thumbs',
       thumbmargin: 15,
-      thumbheight: 75,
-      thumbwidth: 100,
+      thumbheight: 90,
+      thumbwidth: 120,
       thumbfit: 'scaledown',
       thumbborderwidth: 3,
     });
