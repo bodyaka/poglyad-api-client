@@ -8,6 +8,8 @@ if (process.env.BROWSER) {
 
 class ComponentMediaGallery extends Component {
 
+  fotoramaInstance = null;
+
   constructor(props) {
     super(props);
 
@@ -15,7 +17,9 @@ class ComponentMediaGallery extends Component {
   }
 
   componentDidMount() {
-    $(this.galleryContainerRef.current).fotorama({
+    const $nodeGallery = $(this.galleryContainerRef.current);
+
+    $nodeGallery.fotorama({
       width: '100%',
       maxheight: 500,
       arrows: 'always',
@@ -27,10 +31,16 @@ class ComponentMediaGallery extends Component {
       thumbfit: 'scaledown',
       thumbborderwidth: 3,
     });
+
+    this.fotoramaInstance = $nodeGallery.data('fotorama');
   }
 
   componentWillUnmount() {
+    if (this.fotoramaInstance) {
+      this.fotoramaInstance.destroy();
+    }
 
+    this.fotoramaInstance = null;
   }
 
   render() {
