@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 if (process.env.BROWSER) {
-  require('../common/jquery-loader.js');
+  require('./common/jquery-loader.js');
   require('fotorama/fotorama.js');
   require('./VideoGallery.scss');
 }
