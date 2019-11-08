@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ComponentPagination, ComponentVideoGallery, ComponentMediaGallery } from '../react-components';
+import { ComponentPagination, ComponentVideoGallery, ComponentImageGallerySlider } from '../react-components';
 
 const images = [
   {
@@ -13,21 +13,21 @@ const images = [
     pathPreview: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_preview_9dg6kd/goijkftksl57bh80epmu.jpg',
     pathThumb: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_thumb/goijkftksl57bh80epmu.jpg',
   },
-  // {
-  //   id: 3,
-  //   pathPreview: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_preview_g5h0kv/vzvnzwnythappo189esi.png',
-  //   pathThumb: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_thumb/vzvnzwnythappo189esi.png',
-  // },
-  // {
-  //   id: 4,
-  //   pathPreview: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_preview_g5h0kv/u5yvtixcyi5jmyipdzmn.png',
-  //   pathThumb: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_thumb/u5yvtixcyi5jmyipdzmn.png',
-  // },
-  // {
-  //   id: 5,
-  //   pathPreview: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_preview_g5h0kv/ocs7mthtt5wyhdtcgvgi.png',
-  //   pathThumb: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_thumb/ocs7mthtt5wyhdtcgvgi.png',
-  // },
+  {
+    id: 3,
+    pathPreview: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_preview_g5h0kv/vzvnzwnythappo189esi.png',
+    pathThumb: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_thumb/vzvnzwnythappo189esi.png',
+  },
+  {
+    id: 4,
+    pathPreview: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_preview_g5h0kv/u5yvtixcyi5jmyipdzmn.png',
+    pathThumb: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_thumb/u5yvtixcyi5jmyipdzmn.png',
+  },
+  {
+    id: 5,
+    pathPreview: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_preview_g5h0kv/ocs7mthtt5wyhdtcgvgi.png',
+    pathThumb: 'http://res.cloudinary.com/dsorlhdrr/image/upload/t_thumb/ocs7mthtt5wyhdtcgvgi.png',
+  },
 ];
 
 const videos = [
@@ -49,10 +49,11 @@ ReactDOM.render(
       handleTogglePage={() => {}}
     />
     <hr />
-    <ComponentVideoGallery items={videos}/>
+    <ComponentVideoGallery items={videos} />
+    <hr />
+    <ComponentImageGallerySlider items={images} />
     <hr />
   </div>,
 
-
-document.getElementById('main-container')
+  document.getElementById('main-container')
 );

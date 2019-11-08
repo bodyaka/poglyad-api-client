@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 
 if (process.env.BROWSER) {
-  require('./jquery-loader.js');
+  require('../common/jquery-loader.js');
   require('fotorama/fotorama.js');
   require('./VideoGallery.scss');
 }
 
-class ComponentMediaGallery extends Component {
+class ComponentVideoGallery extends Component {
+
+  galleryContainerRef = React.createRef();
 
   fotoramaInstance = null;
-
-  constructor(props) {
-    super(props);
-
-    this.galleryContainerRef = React.createRef();
-  }
 
   componentDidMount() {
     const $nodeGallery = $(this.galleryContainerRef.current);
@@ -60,4 +56,4 @@ class ComponentMediaGallery extends Component {
   }
 }
 
-export default ComponentMediaGallery;
+export default ComponentVideoGallery;

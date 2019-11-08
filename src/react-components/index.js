@@ -1,4 +1,5 @@
 import ComponentPagination from './Pagination';
-import ComponentVideoGallery from './video-gallary/VideoGallery';
+import ComponentVideoGallery from './VideoGallery';
+import ComponentImageGallerySlider from './ImageGallerySlider';
 
-export { ComponentPagination, ComponentVideoGallery };
+export { ComponentPagination, ComponentVideoGallery, ComponentImageGallerySlider };
