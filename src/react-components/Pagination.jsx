@@ -5,6 +5,12 @@ if (process.env.BROWSER) {
 }
 
 class ComponentPagination extends Component {
+  onClick(page, e) {
+    e.preventDefault();
+
+    this.props.handleTogglePage(page);
+  }
+
   getLink(page, title) {
     let key = String(page + title);
     let className = 'page';
@@ -15,8 +21,8 @@ class ComponentPagination extends Component {
     return (
       <a
         key={key}
-        onClick={this.props.handleTogglePage.bind(null, page)}
-        href="javascript:void(0)"
+        onClick={this.onClick.bind(this, page)}
+        href="#"
         className={className}>
         {title}
       </a>
