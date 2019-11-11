@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ComponentPagination, ComponentVideoGallery, ComponentImageGallerySlider } from '../react-components';
+import {
+  ComponentPagination,
+  ComponentVideoGallery,
+  ComponentImageGallerySlider,
+  ComponentPageToUp,
+} from '../react-components';
 
 const images = [
   {
@@ -43,6 +48,7 @@ const videos = [
 
 ReactDOM.render(
   <div>
+    <ComponentPageToUp buttonLabel={'вгорку'} showAfter={100} />
     <hr />
     <ComponentPagination
       paging={{ page: 2, limit: 10, pages: 3, total: 25}}

@@ -1,0 +1,51 @@
+.page-to-up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 100;
+
+  .page-to-up-image {
+    width: 45px;
+    height: 45px;
+    display: block;
+    margin: 0 auto 5px;
+    border-radius: 50%;
+    background: {
+      image: url('./up.svg');
+      repeat: no-repeat;
+      position: center;
+    }
+  }
+
+  &:hover {
+    .page-to-up-image {
+      box-shadow: 0 3px 6px #D8D8D8;
+    }
+  }
+
+  &.fade-out {
+    opacity: 0;
+    transition: opacity 0.2s;
+
+  }
+
+  &.fade-in {
+    opacity: 1;
+    transition: opacity 0.2s;
+
+  }
+}
+
+@media (max-width: 768px) {
+  .page-to-up {
+    font-size: 0;
+
+    .page-to-up-image {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -14,6 +14,7 @@
 	"dependencies": {
 		"request": "^2.88.0",
 		"http-proxy": "^1.18.0",
+		"lodash": "^4.17.15",
 
 		"express-session": "^1.16.2",
 		"cookie-parser": "^1.4.4",
