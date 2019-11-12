@@ -38,7 +38,7 @@ class ComponentPageToUp extends Component {
         ref={this.componentRef}
         onClick={this.onClick.bind(this)}
       >
-        <div className="page-to-up-image"></div>
+        <span className="page-to-up-image"></span>
 
         {this.props.buttonLabel || 'Вгору'}
       </a>
