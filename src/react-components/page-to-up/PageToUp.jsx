@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import debounce from 'lodash/debounce';
+import imageUp from './up.svg';
 
 if (process.env.BROWSER) {
   require('../common/jquery-loader.js');
@@ -38,7 +39,8 @@ class ComponentPageToUp extends Component {
         ref={this.componentRef}
         onClick={this.onClick.bind(this)}
       >
-        <span className="page-to-up-image"></span>
+        {/*<span className="page-to-up-image"></span>*/}
+        <img className="page-to-up-image" src={imageUp} />
 
         {this.props.buttonLabel || 'Вгору'}
       </a>
