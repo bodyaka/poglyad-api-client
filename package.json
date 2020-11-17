@@ -21,8 +21,6 @@
 		"connect-session-sequelize": "^7.0.4",
 
 		"pg": "8.5.1",
-		"pg-native": "3.0.0",
-		"pg-hstore": "2.3.3",
 
 		"nconf": "^0.10.0",
 
