@@ -20,9 +20,9 @@
 		"sequelize": "^5.19.1",
 		"connect-session-sequelize": "^6.0.0",
 
-		"pg": "7.11.0",
-		"pg-native": "3.0.0",
-		"pg-hstore": "2.3.3",
+		"pg": "^8.8.0",
+		"pg-native": "^3.0.1",
+		"pg-hstore": "^2.3.4",
 
 		"nconf": "^0.10.0",
 
